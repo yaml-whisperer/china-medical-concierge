@@ -1,8 +1,36 @@
 // Fill these values only when the public channels are ready. Social values are full https:// URLs.
 const CONFIG = { whatsapp: '', email: '', tiktok: '', instagram: '', xiaohongshu: '' };
 
+const PAGE_LANG = document.documentElement.lang === 'zh-Hant' ? 'zh-Hant' : 'en';
+const I18N = {
+  en: {
+    soon: "Coming soon — please use the assessment form and we'll reply within 24h",
+    emailInvalid: 'Please enter a valid email address.',
+    phoneInvalid: 'Please enter a fuller phone / WhatsApp number (include country code).',
+    contactRequired: 'Please enter the contact value we should use to reply.',
+    fixFields: 'Please fix the highlighted fields and try again.',
+    submitting: 'Submitting…', sending: 'Sending your request…', submit: 'Submit assessment request',
+    submissionFailed: 'Submission failed', webhookFailed: 'Webhook submit failed', saved: 'saved', networkError: 'network error',
+    success: 'Thank you. Your assessment request was received (ref {ref}). We aim to reply within 24 hours on business days via the contact method you provided.',
+    requestFailed: 'We could not save your request right now. Please try again in a moment.'
+  },
+  'zh-Hant': {
+    soon: '即將推出 — 請先使用評估表單，我們將於 24 小時內回覆',
+    emailInvalid: '請填寫有效的電郵地址。',
+    phoneInvalid: '請填寫完整的電話或 WhatsApp 號碼，並包含國際區碼。',
+    contactRequired: '請填寫我們可用來回覆您的聯絡資料。',
+    fixFields: '請修正標示的欄位後再試一次。',
+    submitting: '正在送出…', sending: '正在傳送您的申請…', submit: '送出評估申請',
+    submissionFailed: '申請送出失敗', webhookFailed: '接收端傳送失敗', saved: '已儲存', networkError: '網路連線錯誤',
+    success: '謝謝您，我們已收到您的評估申請（參考編號：{ref}）。我們力求於工作日內 24 小時內，透過您提供的聯絡方式回覆。',
+    requestFailed: '目前無法儲存您的申請，請稍後再試。'
+  }
+};
+function t(key) { return I18N[PAGE_LANG][key]; }
+
 (function setupChannels() {
   const toast = document.getElementById('channel-toast');
+  toast.querySelector('span').textContent = t('soon');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let toastTimer;
   function showComingSoon(event) {
@@ -67,6 +95,7 @@ const CONFIG = { whatsapp: '', email: '', tiktok: '', instagram: '', xiaohongshu
 
   function clearErrors() {
     form.querySelectorAll(".field.error").forEach((el) => el.classList.remove("error"));
+    form.querySelector('[data-field="contact_value"] .error-msg').textContent = t('contactRequired');
   }
 
   function setStatus(type, message) {
@@ -98,12 +127,12 @@ const CONFIG = { whatsapp: '', email: '', tiktok: '', instagram: '', xiaohongshu
     const contactField = form.querySelector('[data-field="contact_value"]');
     if (method === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
       contactField.classList.add("error");
-      contactField.querySelector(".error-msg").textContent = "Please enter a valid email address.";
+      contactField.querySelector(".error-msg").textContent = t('emailInvalid');
       ok = false;
     } else if ((method === "whatsapp" || method === "phone") && value && value.replace(/\D/g, "").length < 7) {
       contactField.classList.add("error");
       contactField.querySelector(".error-msg").textContent =
-        "Please enter a fuller phone / WhatsApp number (include country code).";
+        t('phoneInvalid');
       ok = false;
     }
     return ok;
@@ -148,7 +177,7 @@ const CONFIG = { whatsapp: '', email: '', tiktok: '', instagram: '', xiaohongshu
       return {};
     });
     if (!res.ok || !data.ok) {
-      throw new Error((data && data.error) || "Submission failed (" + res.status + ")");
+      throw new Error((PAGE_LANG === 'en' && data && data.error) || t('submissionFailed') + ' (' + res.status + ')' );
     }
     return data;
   }
@@ -160,7 +189,7 @@ const CONFIG = { whatsapp: '', email: '', tiktok: '', instagram: '', xiaohongshu
       body: JSON.stringify(payload),
     });
     if (!res.ok) {
-      throw new Error("Webhook submit failed (" + res.status + ")");
+      throw new Error(t('webhookFailed') + ' (' + res.status + ')' );
     }
     let data = {};
     try {
@@ -177,7 +206,7 @@ const CONFIG = { whatsapp: '', email: '', tiktok: '', instagram: '', xiaohongshu
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
     if (!validate()) {
-      setStatus("err", "Please fix the highlighted fields and try again.");
+      setStatus("err", t('fixFields'));
       const firstError = form.querySelector(".field.error");
       if (firstError) firstError.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
@@ -185,8 +214,8 @@ const CONFIG = { whatsapp: '', email: '', tiktok: '', instagram: '', xiaohongshu
 
     const payload = payloadFromForm();
     submitBtn.disabled = true;
-    submitBtn.textContent = "Submitting…";
-    setStatus("ok", "Sending your request…");
+    submitBtn.textContent = t('submitting');
+    setStatus("ok", t('sending'));
 
     try {
       const hasApi = await apiAvailable();
@@ -196,20 +225,16 @@ const CONFIG = { whatsapp: '', email: '', tiktok: '', instagram: '', xiaohongshu
       clearErrors();
       setStatus(
         "ok",
-        "Thank you. Your assessment request was received (ref " +
-          (data.lead_id || "saved") +
-          "). We aim to reply within 24 hours on business days via the contact method you provided."
+        t('success').replace('{ref}', data.lead_id || t('saved'))
       );
     } catch (err) {
       setStatus(
         "err",
-        "We could not save your request right now. Please try again in a moment. (" +
-          (err && err.message ? err.message : "network error") +
-          ")"
+        t('requestFailed') + (PAGE_LANG === 'en' ? ' (' + (err && err.message ? err.message : t('networkError')) + ')' : '')
       );
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = "Submit assessment request";
+      submitBtn.textContent = t('submit');
     }
   });
 })();
