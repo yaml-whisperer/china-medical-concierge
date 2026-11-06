@@ -5,12 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Get matched to hospitals, interpreters, and arrival support in Shanghai, China. Consultation and matching only — no medical outcome guarantees." />
   <title>China Medical Concierge — Shanghai matching for international patients</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700;750;800&display=swap" rel="stylesheet" />
+  <meta name="theme-color" content="#153f43" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#assess">Skip to assessment form</a>
   <header class="site-header">
     <div class="wrap nav">
-      <a class="logo" href="#top">China Medical <span>Concierge</span></a>
+      <a class="logo" href="#top"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V5h14v16M2 21h20M9 3h6M9 10h6m-3-3v6M9 21v-4h6v4"/></svg></span><span class="brand-name">China Medical <span>Concierge</span></span></a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#who">Who it's for</a>
         <a href="#services">What we arrange</a>
@@ -25,8 +30,8 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">Shanghai MVP · matching &amp; facilitation</div>
-          <h1>Get matched to care in Shanghai, China — hospitals, interpreters, and arrival support.</h1>
+          <div class="eyebrow"><span class="live-dot"></span>Shanghai MVP · matching &amp; facilitation</div>
+          <h1>Get matched to care in <span class="hero-accent">Shanghai, China</span> — hospitals, interpreters, and arrival support.</h1>
           <p class="lead">
             We help international patients connect with hospitals and trusted local partners for consultations,
             appointments, and travel logistics. Starting in Shanghai; we can discuss other cities case by case.
@@ -38,9 +43,12 @@
             <span class="chip">Cardiology (matching)</span>
             <span class="chip">General / second opinion</span>
           </div>
-          <a class="btn btn-primary" href="#assess">Request a free assessment</a>
+          <a class="btn btn-primary" href="#assess">Request a free assessment <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a><div class="contact-actions"><a class="btn btn-secondary" href="#assess" data-channel="whatsapp" aria-label="Chat on WhatsApp — coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.6a8 8 0 0 1-11.8 7L3 20l1.4-5A8 8 0 1 1 20 11.6Z"/><path d="M8 8c0 4 3 7 7 7l1-2-3-1-1 1-2-2 1-1-1-3Z"/></svg><span>Chat on WhatsApp</span></a><a class="btn btn-secondary" href="#assess" data-channel="email" aria-label="Email us — coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span>Email us</span></a></div><p class="channel-note">The assessment form is live. WhatsApp &amp; email are coming soon.</p>
         </div>
         <aside class="hero-card" aria-label="Service snapshot">
+          <div class="city-art" aria-hidden="true"><div class="art-label">YOUR NEXT CHAPTER<br><strong>Starts in Shanghai.</strong></div>
+          <svg class="skyline" viewBox="0 0 500 310" fill="none"><defs><linearGradient id="tower" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d6f3ef"/><stop offset="1" stop-color="#81b8b0"/></linearGradient></defs><circle cx="345" cy="105" r="68" fill="#d3f2d8" opacity=".5"/><path d="M0 274Q100 237 235 272t265-9v47H0Z" fill="#28636a"/><g fill="url(#tower)" stroke="#b7e2d8" stroke-width="1.2"><path d="M94 270V160h40v110M144 270V196h25v74M186 270V133h30v137M244 270V156h30v114M292 270V106l27-18 27 18v164M364 270V86l24-37 17 221M418 270V134l27-18 9 154"/><path d="m50 269 14-96h12l14 96M70 36v183"/><circle cx="70" cy="123" r="24"/><circle cx="70" cy="185" r="12"/><path d="m360 270 27-205 8 205"/></g><g stroke="#f1fff8" opacity=".5"><path d="M102 180h24m-24 18h24m-24 18h24m-24 18h24M300 121h38m-38 20h38m-38 20h38m-38 20h38m-38 20h38m-38 20h38M192 153h18m-18 20h18m-18 20h18m-18 20h18"/></g><path d="M0 291q120-18 250 0t250-4" stroke="#8dcec4" stroke-width="2" opacity=".6"/></svg>
+          <div class="art-tag">31.2304° N &nbsp; 121.4737° E</div></div><div class="snapshot-body">
           <h2>Consultation + matching only</h2>
           <p>Licensed hospitals deliver care. We coordinate introductions, interpretation, and logistics.</p>
           <ul>
@@ -49,10 +57,11 @@
             <li>Public contact: assessment form only</li>
             <li>No outcome guarantees</li>
           </ul>
-        </aside>
+        </div></aside>
       </div>
     </section>
 
+    <div class="trust-strip"><div class="wrap trust-items"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></svg>Consultation, not treatment</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h12M9 3v2m-4 3c2 4 5 6 9 7M12 5c-1 5-4 8-9 10m11 6 4-11 4 11m-6-4h4"/></svg>Bilingual support</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20M6 15h4"/></svg>Clear coordination fees</span></div></div>
     <section class="section" id="who">
       <div class="wrap">
         <h2>Who this is for</h2>
@@ -74,23 +83,23 @@
         <p class="section-intro">Facilitation services around hospital matching and on-the-ground coordination — not medical treatment.</p>
         <div class="grid-3">
           <article class="card">
-            <h3>1. Hospital matching</h3>
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V5h14v16M2 21h20M9 3h6M9 10h6m-3-3v6M9 21v-4h6v4"/></svg></div><h3>1. Hospital matching</h3>
             <p>Introductions to suitable hospitals / international departments based on your case summary.</p>
           </article>
           <article class="card">
-            <h3>2. Interpreter &amp; escort</h3>
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h12M9 3v2m-4 3c2 4 5 6 9 7M12 5c-1 5-4 8-9 10m11 6 4-11 4 11m-6-4h4"/></svg></div><h3>2. Interpreter &amp; escort</h3>
             <p>Bilingual support for visits and appointments.</p>
           </article>
           <article class="card">
-            <h3>3. Arrival logistics</h3>
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 12 18-8-6 17-4-7-8-2Z"/><path d="m11 14 6-6"/></svg></div><h3>3. Arrival logistics</h3>
             <p>Guidance on documents, timing, and local coordination (partners as needed).</p>
           </article>
           <article class="card">
-            <h3>4. Insurance / payment coordination</h3>
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20M6 15h4"/></svg></div><h3>4. Insurance / payment coordination</h3>
             <p>Help clarifying what hospitals accept and how fees are typically paid (no payment guarantees).</p>
           </article>
           <article class="card">
-            <h3>5. Case coordination</h3>
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M9 5V3h6v2M8 11h8m-8 5h5"/></svg></div><h3>5. Case coordination</h3>
             <p>One point of contact from first inquiry to visit day.</p>
           </article>
         </div>
@@ -100,7 +109,7 @@
     <section class="section" id="how">
       <div class="wrap">
         <h2>How it works</h2>
-        <div class="grid-4">
+        <div class="grid-4 timeline">
           <article class="card">
             <div class="step-num">1</div>
             <h3>Submit the form</h3>
@@ -184,11 +193,11 @@
 
     <section class="section form-section" id="assess">
       <div class="wrap">
-        <h2>Request a free assessment</h2>
+        <div class="eyebrow">LET’S PLAN YOUR NEXT STEP</div><h2>Request a free assessment</h2>
         <p class="section-intro">
           Tell us about your case and how we should reply. This page uses the form only — we do not publish a company WhatsApp or email yet.
         </p>
-        <div class="form-shell">
+        <div class="assessment-layout"><div class="form-shell">
           <form id="lead-form" name="assessment" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" netlify novalidate>
             <input type="hidden" name="form-name" value="assessment" />
             <p class="visually-hidden" style="position:absolute;left:-10000px;height:1px;width:1px;overflow:hidden;">
@@ -280,14 +289,14 @@
             </div>
             <div id="form-status" class="status" role="status" aria-live="polite"></div>
           </form>
-        </div>
+        </div><aside class="contact-card"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h12M9 3v2m-4 3c2 4 5 6 9 7M12 5c-1 5-4 8-9 10m11 6 4-11 4 11m-6-4h4"/></svg></div><h3>A human point of contact.</h3><p>Start with the assessment form. We’ll reply using the details you provide, within 24 hours on business days.</p><div class="contact-live"><span class="live-dot"></span> Assessment form · available now</div><hr><h4>Prefer a conversation?</h4><p>WhatsApp and Gmail / email are coming soon. Until then, please use the assessment form.</p><div class="contact-actions"><a class="btn btn-secondary" href="#assess" data-channel="whatsapp" aria-label="Chat on WhatsApp — coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.6a8 8 0 0 1-11.8 7L3 20l1.4-5A8 8 0 1 1 20 11.6Z"/><path d="M8 8c0 4 3 7 7 7l1-2-3-1-1 1-2-2 1-1-1-3Z"/></svg><span>Chat on WhatsApp</span></a><a class="btn btn-secondary" href="#assess" data-channel="email" aria-label="Email us — coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span>Email us</span></a></div><p class="channel-note">No public number or email address is live yet.</p><div class="contact-care"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></svg><p>Consultation and matching only.<br>No medical outcome guarantees.</p></div></aside></div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
-      <strong>China Medical Concierge</strong> — consulting and facilitation for international patients (Shanghai MVP).
+<div class="footer-top"><div><strong>China Medical Concierge</strong> — consulting and facilitation for international patients (Shanghai MVP).</div><div class="footer-social"><span>FIND US NEXT · COMING SOON</span><div class="social-links"><a class="social-link" href="#assess" data-channel="tiktok" aria-label="TikTok — coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v12a4 4 0 1 1-4-4h1M14 3c1 4 3 5 6 5"/></svg><span>TikTok</span></a><a class="social-link" href="#assess" data-channel="instagram" aria-label="Instagram — coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a><a class="social-link" href="#assess" data-channel="xiaohongshu" aria-label="小红书 / RED — coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="22" height="18" rx="5" fill="#d93448" stroke="none"/><text x="12" y="15" font-size="7" font-family="Arial,sans-serif" font-weight="700" text-anchor="middle" fill="white" stroke="none">RED</text></svg><span>小红书 / RED</span></a></div></div></div>
       <p class="legal">
         Consulting and facilitation services only. Not medical advice. Materials do not claim cure or superiority of any treatment.
         Terms provided before paid engagement. No third-party medical brand used without authorization.
@@ -296,6 +305,8 @@
     </div>
   </footer>
 
+<nav class="social-rail" aria-label="Social media — coming soon"><div class="social-links"><a class="social-link" href="#assess" data-channel="tiktok" aria-label="TikTok — coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v12a4 4 0 1 1-4-4h1M14 3c1 4 3 5 6 5"/></svg><span>TikTok</span></a><a class="social-link" href="#assess" data-channel="instagram" aria-label="Instagram — coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a><a class="social-link" href="#assess" data-channel="xiaohongshu" aria-label="小红书 / RED — coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="22" height="18" rx="5" fill="#d93448" stroke="none"/><text x="12" y="15" font-size="7" font-family="Arial,sans-serif" font-weight="700" text-anchor="middle" fill="white" stroke="none">RED</text></svg><span>小红书 / RED</span></a></div></nav>
+  <div id="channel-toast" class="channel-toast" role="status" aria-live="polite" hidden><span>Coming soon — please use the assessment form and we'll reply within 24h</span><button type="button" aria-label="Dismiss notification">×</button></div>
   <script src="app.js" defer></script>
 </body>
 </html>

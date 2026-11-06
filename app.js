@@ -1,3 +1,49 @@
+// Fill these values only when the public channels are ready. Social values are full https:// URLs.
+const CONFIG = { whatsapp: '', email: '', tiktok: '', instagram: '', xiaohongshu: '' };
+
+(function setupChannels() {
+  const toast = document.getElementById('channel-toast');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let toastTimer;
+  function showComingSoon(event) {
+    event.preventDefault();
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 8000);
+    document.getElementById('assess').scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
+  }
+  document.querySelectorAll('[data-channel]').forEach(link => {
+    const channel = link.dataset.channel;
+    const value = String(CONFIG[channel] || '').trim();
+    let href = '';
+    if (value && channel === 'whatsapp') {
+      const digits = value.replace(/\D/g, '');
+      if (digits) href = 'https://wa.me/' + digits;
+    } else if (value && channel === 'email') {
+      href = 'mailto:' + value.replace(/^mailto:/i, '');
+    } else if (value) {
+      try { const url = new URL(value); if (url.protocol === 'https:') href = url.href; } catch (_) {}
+    }
+    if (href) {
+      link.href = href;
+      link.setAttribute('aria-label', link.textContent.trim());
+      if (channel !== 'email') { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
+    } else {
+      link.addEventListener('click', showComingSoon);
+    }
+  });
+  toast.querySelector('button').addEventListener('click', () => { toast.hidden = true; });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') toast.hidden = true; });
+  if ('IntersectionObserver' in window && !reducedMotion.matches) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+    }), { threshold: 0.07 });
+    document.querySelectorAll('.section .card, .cities, .faq details, .assessment-layout').forEach(el => {
+      el.classList.add('reveal'); observer.observe(el);
+    });
+  }
+})();
+
 (function () {
   const form = document.getElementById("lead-form");
   const statusEl = document.getElementById("form-status");
