@@ -1,5 +1,5 @@
 // Fill these values only when the public channels are ready. Social values are full https:// URLs.
-const CONFIG = { whatsapp: '', email: '', tiktok: '', instagram: '', xiaohongshu: '' };
+const CONFIG = { whatsapp: '', email: 'chinamedicalconcierge@gmail.com', tiktok: '', instagram: '', xiaohongshu: '' };
 
 const PAGE_LANG = document.documentElement.lang === 'zh-Hant' ? 'zh-Hant' : 'en';
 const I18N = {
@@ -79,8 +79,8 @@ function t(key) { return I18N[PAGE_LANG][key]; }
   if (!form) return;
 
   // Free shareable dump used when no same-host /api/leads server is available.
-  // Inbox: https://webhook.site/#!/view/b044420a-e14f-4d6d-8ae1-3a5262be27e2
-  const FALLBACK_WEBHOOK = "https://webhook.site/b044420a-e14f-4d6d-8ae1-3a5262be27e2";
+  const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeRpvLr1iXjGIqNAO_4a0YglrQ27HE92sJ8XX-yawwBXP_Siw/formResponse";
+  const FORM_ENTRIES = {full_name:"entry.172972456",country:"entry.530629257",contact_method:"entry.1467589717",contact_value:"entry.986588075",condition:"entry.1209816164",preferred_city:"entry.830305598",timeline:"entry.1223589012",budget_range:"entry.1969512921",notes:"entry.2147406081",consent:"entry.1268131464",source:"entry.1476123850",page_url:"entry.1994301008",submitted_at:"entry.1240095215"};
 
   const requiredFields = [
     "full_name",
@@ -183,24 +183,11 @@ function t(key) { return I18N[PAGE_LANG][key]; }
   }
 
   async function submitWebhook(payload) {
-    const res = await fetch(FALLBACK_WEBHOOK, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) {
-      throw new Error(t('webhookFailed') + ' (' + res.status + ')' );
-    }
-    let data = {};
-    try {
-      data = await res.json();
-    } catch (_) {}
-    return {
-      ok: true,
-      lead_id: "WH-" + String(Date.now()).slice(-8),
-      backend: "webhook_site",
-      raw: data,
-    };
+    const body = new URLSearchParams();
+    Object.keys(FORM_ENTRIES).forEach(function (k) { body.append(FORM_ENTRIES[k], payload[k] == null ? "" : String(payload[k])); });
+    // Google Forms does not send CORS headers; no-cors posts still record the row (response is opaque).
+    await fetch(FORM_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: body.toString() });
+    return { ok: true, lead_id: "CMC-" + String(Date.now()).slice(-8), backend: "google_form" };
   }
 
   form.addEventListener("submit", async function (event) {
