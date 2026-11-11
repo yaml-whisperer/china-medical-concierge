@@ -1,28 +1,27 @@
-# Photo sources — v5 carousel draft (revised 2026-11-11)
+# Photo sources — v5 carousel draft (revision 3, 2026-11-11)
 
-All six photographs were downloaded on **2026-11-11** from Pexels and stored locally in `assets/photos/`. They are used under the [Pexels License](https://www.pexels.com/license/): free to use on a website, including commercially; attribution is not required (but is given here); modification (cropping to a consistent 16:9 frame, WebP compression) is allowed. They must not be presented as an endorsement by the people or brands appearing in the imagery.
+All six photographs come from the public websites of three Shanghai hospital international departments. They replaced the earlier Pexels set on the owner's instruction (2026-11-11): use the hospitals' own published photographs. Captions on the page stay generic and do not name a hospital. A short credit under the carousel states that the photographs illustrate typical care settings and do not imply a partnership or endorsement.
 
-They are generic, real (camera) photographs of modern clinical interiors. They are **not** photographs of named Shanghai hospitals and are not captioned as such. Photographs from Shanghai hospital websites are copyrighted and are listed separately in `../hospital-photo-reference.md` only so the owner can request authorization.
+Each file was cropped to a consistent 16:9 frame and exported as WebP at 1600×900 on **2026-11-11** (Singapore time). Decorative white frames on two Huashan photographs were cropped out before the 16:9 pass.
 
-Revision reason (owner feedback): the previous set showed Western doctors and COVID-era masks. The new set has no masks, face shields or other COVID cues; the only person shown as a clinician is an East Asian doctor; no hospital names or logos are readable.
-
-| # | Filename | Scene | Source page | Photographer | License | Download date | Attribution line (optional) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | `photo-01-hospital-corridor.webp` | Long, clean hospital ward corridor with handrails and windows (no people) | https://www.pexels.com/photo/29948395/ | Burçak Çubukçu | [Pexels License](https://www.pexels.com/license/) | 2026-11-11 | Photo by Burçak Çubukçu on Pexels |
-| 2 | `photo-02-reception-lounge.webp` | Calm waiting lounge with white armchairs and seascape paintings (no people) | https://www.pexels.com/photo/28999494/ | Quang Nguyen Vinh | [Pexels License](https://www.pexels.com/license/) | 2026-11-11 | Photo by Quang Nguyen Vinh on Pexels |
-| 3 | `photo-03-doctor-consultation.webp` | East Asian woman doctor in a white coat listening to a patient (patient seen from behind/side) | https://www.pexels.com/photo/5593720/ | Chokniti Khongchum | [Pexels License](https://www.pexels.com/license/) | 2026-11-11 | Photo by Chokniti Khongchum on Pexels |
-| 4 | `photo-04-patient-ward.webp` | Clean, empty inpatient ward with beds and privacy curtains | https://www.pexels.com/photo/7335565/ | supplier gorden ready stok minimalis (Pexels account) | [Pexels License](https://www.pexels.com/license/) | 2026-11-11 | Photo by supplier gorden ready stok minimalis on Pexels |
-| 5 | `photo-05-operating-theatre.webp` | Clean, prepared operating theatre with surgical lights and anaesthesia workstation (no people) | https://www.pexels.com/photo/39824872/ | Timothy Nkwasibwe | [Pexels License](https://www.pexels.com/license/) | 2026-11-11 | Photo by Timothy Nkwasibwe on Pexels |
-| 6 | `photo-06-ct-imaging-room.webp` | Modern CT scanner and patient table in a bright imaging room (no people) | https://www.pexels.com/photo/13176356/ | Pexels account whose display name is "contact me +923323219715" | [Pexels License](https://www.pexels.com/license/) | 2026-11-11 | Photo from Pexels |
+| # | Filename | Scene | Source page | Original image | Notes |
+| --- | --- | --- | --- | --- | --- |
+| 1 | `photo-01-outpatient-corridor.webp` | Outpatient corridor and nurses' station | Huashan Worldwide Medical Center, environment page: https://www.huashan.org.cn/info/1096/48181.htm (caption on the page: 门诊环境) | https://www.huashan.org.cn/__local/4/35/06/F6C88B2838D66D9B670B9076DE9_E3E994A4_C348.jpg (680×453) | White decorative frame removed. Upscaled from a smaller official file. No people. |
+| 2 | `photo-02-waiting-lounge.webp` | Waiting lounge with partitioned seating | The same scene appears on Zhongshan Hospital International Medical Center's official 就诊环境 collage: https://www.zs-hospital.sh.cn/guoji/channel/5328.html. The official page publishes it only as part of a wide collage (https://www.zs-hospital.sh.cn/upload/image/240821/17242069432054.jpg). The higher-resolution single frame used here is from the same department photo set, published at https://news.zhuyitai.com/24/0122/xm510155427.html | https://file.zhuyitai.com/ueditor/2024/01/22/014d1bf25c267d60d2bc04ef3067be98.jpg (1280×852) | No hospital name readable in the frame. No people. |
+| 3 | `photo-03-consultation-room.webp` | Consultation room with desk and examination couch | Huashan Worldwide Medical Center, environment page: https://www.huashan.org.cn/info/1096/48181.htm (caption on the page: 门诊诊室) | https://www.huashan.org.cn/__local/4/F3/F4/B03B561C3ED7F3CEFBDEC4DA21E_EA0F5C45_C4A3.jpg (680×453) | White decorative frame removed. Upscaled from a smaller official file. No people. |
+| 4 | `photo-04-ihc-entrance.webp` | Entrance to an international healthcare center | Renji Hospital International Medical Center article: https://www.renji.com/article/detail/58c748611cfd45e6803e618e769e0096 | https://www.renji.com/files/backend/20240611/a351769490f14654b8cffcc81df6c856.jpeg (4000×3000) | The 仁济 / International Healthcare Center name and logo are visible on the wall, as they appear in the official photograph. Other official interior photos on the international-clinic page are only about 400 px wide and were not used. |
+| 5 | `photo-05-consulting-corridor.webp` | Consulting-room corridor with handrails and waiting seats | Same department as Zhongshan's official 就诊环境 page (https://www.zs-hospital.sh.cn/guoji/channel/5328.html). Higher-resolution single frame from the same photo set: https://news.zhuyitai.com/24/0122/xm510155427.html | https://file.zhuyitai.com/ueditor/2024/01/22/3f7e2bd05c884d5a246dfdb08e50c4ce.jpg (4000×3000) | A small doctor portrait is visible on a door display screen. Signage: 诊室07 / Consulting Room. |
+| 6 | `photo-06-inpatient-room.webp` | Single inpatient room with a sitting area | Huashan Worldwide Medical Center, facilities page: https://www.huashan.org.cn/info/4871/217031.htm (环境设施) | https://www.huashan.org.cn/__local/D/18/84/E532368E3FCAEB1D17888DE786C_99E3CA70_107AB.jpg (819×640) | No frame. Mild upscale. Room number 18 is visible on the wall rail. No people. |
 
 Processing notes:
 
-- Each file was center-cropped to 16:9 and exported as WebP at 1600×900 (all under 110 KB).
-- Photo 2 was cropped tighter (central ~55% of the frame) to remove a building-brand wordmark on the right, an advertising poster on the left, and a small altar.
-- No hospital names, wayfinding logos, or staff name badges are readable at display size. Small door signs in photo 1 are not legible. Equipment manufacturer marks (e.g. on the anaesthesia monitor in photo 5 and the CT gantry in photo 6) were left as they appear; they are not hospital names.
+- Target display size is 1600×900 WebP, quality 82.
+- Huashan official files are relatively small (about 680–819 px on the long side); they will look softer than the Renji and Zhongshan frames.
+- Staff group photographs and named portraits from the same hospital pages were not used (many identifiable faces).
+- None of the three international-department pages published an operating-theatre photograph, so the carousel no longer includes an OR or CT room.
+- Photographs that are only a hospital logo close-up, a plaque, or an insurance-partner logo wall were not used.
 
 Verification (2026-11-11):
 
-- Each source page above was opened and showed "Free" under License (Pexels License) before inclusion.
-- Each final 1600×900 file was viewed: no masks/face shields/PPE, no Western clinicians, no readable hospital names or logos, no identifiable patient in distress.
-- Candidates rejected: Unsplash+ (paid) images; images showing surgical/face masks or COVID PPE; teams with Western clinicians; likely AI-generated images; images with readable clinic names (e.g. a Russian-language clinic sign, Japanese wayfinding signs).
+- Each source page above was opened and the original image URL was downloaded from that host (or, for Zhongshan frames 2 and 5, matched against the official 就诊环境 collage, then taken from the higher-resolution official-department photo set).
+- Final 1600×900 files were viewed: no masks or COVID PPE; no Western clinicians; Huashan decorative frames removed.

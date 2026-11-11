@@ -12,7 +12,7 @@ Then open http://127.0.0.1:8766/ (English) and http://127.0.0.1:8766/zh-hant.htm
 
 ## Carousel
 
-A `#facilities` section sits after the hero and trust strip, before `#who`. It has a short intro, three anonymous setting blurbs (a major tertiary general hospital, a specialty / international-department setting, and a modern surgical campus — no hospital names), and one unified 16:9 photo carousel of six real Pexels photographs. Auto-slide left every 5 seconds, pause on hover/focus, no autoplay when `prefers-reduced-motion` is set; previous/next, dots, pointer swipe, and keyboard arrows when the carousel is focused. Photo licenses and source URLs are in `PHOTO-SOURCES.md`. A header nav link was not added, because the existing nav is already tight on mid-width screens.
+A `#facilities` section sits after the hero and trust strip, before `#who`. It has a short intro, three anonymous setting blurbs (a major tertiary general hospital, a specialty / international-department setting, and a modern surgical campus — no hospital names), and one unified 16:9 photo carousel of six real photographs from Shanghai hospital international-department websites. Auto-slide left every 5 seconds, pause on hover/focus, no autoplay when `prefers-reduced-motion` is set; previous/next, dots, pointer swipe, and keyboard arrows when the carousel is focused. Photo licenses and source URLs are in `PHOTO-SOURCES.md`. A header nav link was not added, because the existing nav is already tight on mid-width screens.
 
 # China Medical Concierge — v2
 
