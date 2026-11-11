@@ -15,15 +15,15 @@ const I18N = {
     requestFailed: 'We could not save your request right now. Please try again in a moment.'
   },
   'zh-Hant': {
-    soon: '即將推出 — 請先使用評估表單，我們將於 24 小時內回覆',
-    emailInvalid: '請填寫有效的電郵地址。',
-    phoneInvalid: '請填寫完整的電話或 WhatsApp 號碼，並包含國際區碼。',
-    contactRequired: '請填寫我們可用來回覆您的聯絡資料。',
-    fixFields: '請修正標示的欄位後再試一次。',
-    submitting: '正在送出…', sending: '正在傳送您的申請…', submit: '送出評估申請',
-    submissionFailed: '申請送出失敗', webhookFailed: '接收端傳送失敗', saved: '已儲存', networkError: '網路連線錯誤',
-    success: '謝謝您，我們已收到您的評估申請（參考編號：{ref}）。我們力求於工作日內 24 小時內，透過您提供的聯絡方式回覆。',
-    requestFailed: '目前無法儲存您的申請，請稍後再試。'
+    soon: '即將開通——請先填寫評估表單，我們將在 24 小時內回復',
+    emailInvalid: '請填寫有效的郵箱地址。',
+    phoneInvalid: '請填寫完整的電話或 WhatsApp 號碼（含國際區號）。',
+    contactRequired: '請填寫我們可以用來回復您的聯繫信息。',
+    fixFields: '請按提示修改標出的填寫項，然後重新提交。',
+    submitting: '正在提交…', sending: '正在發送您的申請…', submit: '提交評估申請',
+    submissionFailed: '申請提交失敗', webhookFailed: '數據接收失敗', saved: '已保存', networkError: '網絡連接錯誤',
+    success: '感謝您！我們已收到您的評估申請（參考編號：{ref}）。工作日內，我們力爭在 24 小時內通過您提供的聯繫方式回復。',
+    requestFailed: '暫時無法保存您的申請，請稍後再試。'
   }
 };
 function t(key) { return I18N[PAGE_LANG][key]; }
