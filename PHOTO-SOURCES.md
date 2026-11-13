@@ -1,0 +1,27 @@
+# Photo sources — v5 carousel draft (revision 4, 2026-11-13)
+
+All six photographs are real camera photos published on the public websites of hospitals (or, for Zhongshan Hospital, the same official international-department photo set as published on 筑医台). They replace the lower-resolution Shanghai set used in revision 3. The owner asked (2026-11-13) that every image be the sharpest available original, and confirmed (2026-11-11) that hospital-published photographs may be used directly. Captions on the page stay generic and do not name a hospital. A short credit under the carousel states that the photographs illustrate typical care settings and do not imply a partnership or endorsement.
+
+Each file was cropped to a consistent 16:9 frame (largest inscribed 16:9 region, no upscaling) and exported as WebP at **1600×900, quality 85**, on **2026-11-13** (Singapore time). Original pixel dimensions below were verified with PIL after download.
+
+| # | Filename | Scene | Hospital / city | Source page | Original image | Original size | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | `photo-01-waiting-lounge.webp` | Outpatient waiting lounge with armchairs and skylights | Peking Union Medical College Hospital, International Medical Services (北京协和医院国际医疗部), Beijing. Official 门诊环境 photograph. | https://www.pumch.cn/department_ims.html (same gallery on https://www.pumch.cn/department_ims/about.html) | https://www.pumch.cn/Uploads/Picture/2023/01/13/s63c0b4e5ca797_4686_2619_350_0.jpg | 4686×2619 | No people. Exit signs (安全出口) and two wall-mounted information screens are visible. Almost already 16:9; a 30-pixel side crop only. |
+| 2 | `photo-02-consultation-room.webp` | Consultation room with desk, chairs, and examination couch | Gleneagles Hospital Hong Kong (港怡医院), Hong Kong, Health Screening Clinic consultation room. | https://gleneagles.hk/facilities-services/explore-facilities-and-services/specialist-outpatient-clinics/health-screening-clinic | https://gleneagles.hk/images/Health-Screening-Clinic_Consultation-Room_5814a.jpg | 5000×3333 | No people. Crop is bottom-aligned so the guest chairs stay in frame. The front edge of the near chair already sits at the bottom of the original photograph. |
+| 3 | `photo-03-consulting-corridor.webp` | Consulting-room corridor with handrails and waiting seats | Zhongshan Hospital, Fudan University, International Medical Center (复旦大学附属中山医院国际医疗部), Shanghai, 7th-floor outpatient corridor (七楼国际医疗部门诊走廊). | https://news.zhuyitai.com/24/0122/xm510155427.html — the same department photo set as the hospital’s official 就诊环境 page (https://www.zs-hospital.sh.cn/guoji/channel/5328.html) | https://file.zhuyitai.com/ueditor/2024/01/22/3f7e2bd05c884d5a246dfdb08e50c4ce.jpg | 4000×3000 | No people in the corridor. A small doctor portrait appears on a door display screen; signage: 诊室07 / Consulting Room. |
+| 4 | `photo-04-ct-imaging.webp` | Computed tomography (CT) scanning room | Gleneagles Hospital Hong Kong (港怡医院), Hong Kong, Radiology. | https://gleneagles.hk/facilities-services/explore-facilities-and-services/diagnostic-services/radiology-services | https://gleneagles.hk/images/16_CT_6941a.jpg | 5000×3333 | No people. Equipment branding (Aquilion ONE) is visible on the gantry. An empty control room is seen through the observation window. |
+| 5 | `photo-05-inpatient-room.webp` | Single inpatient room with a bed, dining table, and window | Peking Union Medical College Hospital, International Medical Services (北京协和医院国际医疗部), Beijing. Official 病房环境 photograph. | https://www.pumch.cn/department_ims.html (same gallery on https://www.pumch.cn/department_ims/about.html) | https://www.pumch.cn/Uploads/Picture/2024/07/31/s66a9d7e973020_4100_2292_306_0.jpg | 4100×2292 | No people. A landscape painting hangs on the wall. Almost already 16:9; a 26-pixel side crop only. |
+| 6 | `photo-06-infusion-bay.webp` | Infusion bay with reclining chairs, IV stands, and privacy curtains | Zhongshan Hospital, Fudan University, International Medical Center (复旦大学附属中山医院国际医疗部), Shanghai (国际医疗部输液服务专区). | https://news.zhuyitai.com/24/0122/xm510155427.html | https://file.zhuyitai.com/ueditor/2024/01/22/e9fa2d046654dfc9f7f42cc39786efc0.jpg | 4000×3000 | No people. No hospital name in the frame. |
+
+Processing notes:
+
+- Target display size is 1600×900 WebP, quality 85. Every original was at least 4000 px on the long side (and at least 1600 px wide); nothing was upscaled.
+- Gleneagles published official operating-theatre photographs, but the originals on the hospital site are only 1500×1001 and were rejected (below the 1600 px width rule). The CT room is used instead as the imaging setting.
+- Official Huashan Worldwide Medical Center environment photographs remain too small (about 680–819 px) and were not reused.
+- Staff portraits, group photographs, and close-up hospital logos or plaques were not used. A PUMCH ward corridor with prominent “PUMCH” glass branding (1693×945) was set aside in favour of the sharper Zhongshan corridor.
+- The six frames come from three hospitals in three cities (Beijing, Hong Kong, Shanghai) and cover a waiting lounge, a consultation room, a corridor, a CT room, a single inpatient room, and an infusion bay.
+
+Verification (2026-11-13):
+
+- Each source page above was opened and the original image URL was downloaded from that host. Pixel dimensions were read with PIL after download.
+- Final 1600×900 files were viewed: no masks or COVID PPE; no Western clinicians; no large watermarks.

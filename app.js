@@ -15,15 +15,15 @@ const I18N = {
     requestFailed: 'We could not save your request right now. Please try again in a moment.'
   },
   'zh-Hant': {
-    soon: '即將推出 — 請先使用評估表單，我們將於 24 小時內回覆',
-    emailInvalid: '請填寫有效的電郵地址。',
-    phoneInvalid: '請填寫完整的電話或 WhatsApp 號碼，並包含國際區碼。',
-    contactRequired: '請填寫我們可用來回覆您的聯絡資料。',
-    fixFields: '請修正標示的欄位後再試一次。',
-    submitting: '正在送出…', sending: '正在傳送您的申請…', submit: '送出評估申請',
-    submissionFailed: '申請送出失敗', webhookFailed: '接收端傳送失敗', saved: '已儲存', networkError: '網路連線錯誤',
-    success: '謝謝您，我們已收到您的評估申請（參考編號：{ref}）。我們力求於工作日內 24 小時內，透過您提供的聯絡方式回覆。',
-    requestFailed: '目前無法儲存您的申請，請稍後再試。'
+    soon: '即將開通——請先填寫評估表單，我們將在 24 小時內回復',
+    emailInvalid: '請填寫有效的郵箱地址。',
+    phoneInvalid: '請填寫完整的電話或 WhatsApp 號碼（含國際區號）。',
+    contactRequired: '請填寫我們可以用來回復您的聯繫信息。',
+    fixFields: '請按提示修改標出的填寫項，然後重新提交。',
+    submitting: '正在提交…', sending: '正在發送您的申請…', submit: '提交評估申請',
+    submissionFailed: '申請提交失敗', webhookFailed: '數據接收失敗', saved: '已保存', networkError: '網絡連接錯誤',
+    success: '感謝您！我們已收到您的評估申請（參考編號：{ref}）。工作日內，我們力爭在 24 小時內通過您提供的聯繫方式回復。',
+    requestFailed: '暫時無法保存您的申請，請稍後再試。'
   }
 };
 function t(key) { return I18N[PAGE_LANG][key]; }
@@ -79,6 +79,7 @@ function t(key) { return I18N[PAGE_LANG][key]; }
   if (!form) return;
 
   // Free shareable dump used when no same-host /api/leads server is available.
+  // Inbox: https://webhook.site/#!/view/b044420a-e14f-4d6d-8ae1-3a5262be27e2
   const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeRpvLr1iXjGIqNAO_4a0YglrQ27HE92sJ8XX-yawwBXP_Siw/formResponse";
   const FORM_ENTRIES = {full_name:"entry.172972456",country:"entry.530629257",contact_method:"entry.1467589717",contact_value:"entry.986588075",condition:"entry.1209816164",preferred_city:"entry.830305598",timeline:"entry.1223589012",budget_range:"entry.1969512921",notes:"entry.2147406081",consent:"entry.1268131464",source:"entry.1476123850",page_url:"entry.1994301008",submitted_at:"entry.1240095215"};
 
@@ -224,4 +225,225 @@ function t(key) { return I18N[PAGE_LANG][key]; }
       submitBtn.textContent = t('submit');
     }
   });
+})();
+
+
+(function setupFacilitiesCarousel() {
+  const root = document.querySelector(".facilities-carousel");
+  if (!root) return;
+
+  const viewport = root.querySelector(".carousel-viewport");
+  const track = root.querySelector(".carousel-track");
+  const originalSlides = Array.from(track.querySelectorAll(".carousel-slide"));
+  const prevBtn = root.querySelector(".carousel-btn.prev");
+  const nextBtn = root.querySelector(".carousel-btn.next");
+  const dotsWrap = root.querySelector(".carousel-dots");
+  const statusEl = root.querySelector(".carousel-status");
+  const count = originalSlides.length;
+  if (!count || !viewport || !track) return;
+
+  const PAGE_LANG = document.documentElement.lang === "zh-Hant" ? "zh-Hant" : "en";
+  const copy = PAGE_LANG === "zh-Hant"
+    ? { status: "第 {n} 張，共 {total} 張。{caption}", goto: "顯示第 {n} 張照片" }
+    : { status: "Photograph {n} of {total}. {caption}", goto: "Show photograph {n} of " + count };
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const INTERVAL = 5000;
+  let index = 0;
+  let position = 1; // position on the track including clones
+  let timer = null;
+  let isAnimating = false;
+  let paused = false;
+
+  const firstClone = originalSlides[0].cloneNode(true);
+  const lastClone = originalSlides[count - 1].cloneNode(true);
+  firstClone.setAttribute("aria-hidden", "true");
+  lastClone.setAttribute("aria-hidden", "true");
+  firstClone.removeAttribute("data-slide");
+  lastClone.removeAttribute("data-slide");
+  track.insertBefore(lastClone, originalSlides[0]);
+  track.appendChild(firstClone);
+
+  const dots = originalSlides.map(function (slide, i) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.setAttribute("aria-label", copy.goto.replace("{n}", String(i + 1)));
+    btn.addEventListener("click", function () { goTo(i); });
+    dotsWrap.appendChild(btn);
+    return btn;
+  });
+
+  function captionFor(i) {
+    const cap = originalSlides[i].querySelector("figcaption");
+    return cap ? cap.textContent.trim() : "";
+  }
+
+  function setTransition(on) {
+    track.style.transition = on && !reduceMotion.matches ? "transform .6s ease" : "none";
+  }
+
+  function translate(pos, animate) {
+    setTransition(animate);
+    track.style.transform = "translateX(" + (-pos * 100) + "%)";
+  }
+
+  function updateChrome() {
+    originalSlides.forEach(function (slide, i) {
+      const active = i === index;
+      slide.setAttribute("aria-hidden", active ? "false" : "true");
+    });
+    dots.forEach(function (dot, i) {
+      if (i === index) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
+    });
+    if (statusEl) {
+      statusEl.textContent = copy.status
+        .replace("{n}", String(index + 1))
+        .replace("{total}", String(count))
+        .replace("{caption}", captionFor(index));
+    }
+  }
+
+  function goTo(nextIndex, direction) {
+    if (isAnimating) return;
+    const wrapped = ((nextIndex % count) + count) % count;
+    if (wrapped === index && direction == null) return;
+
+    if (reduceMotion.matches) {
+      index = wrapped;
+      position = index + 1;
+      translate(position, false);
+      updateChrome();
+      return;
+    }
+
+    let nextPos;
+    if (direction === "next" && index === count - 1 && wrapped === 0) {
+      nextPos = count + 1; // first clone at the end
+    } else if (direction === "prev" && index === 0 && wrapped === count - 1) {
+      nextPos = 0; // last clone at the start
+    } else {
+      nextPos = wrapped + 1;
+    }
+
+    isAnimating = true;
+    index = wrapped;
+    position = nextPos;
+    translate(position, true);
+    updateChrome();
+  }
+
+  track.addEventListener("transitionend", function (event) {
+    if (event.target !== track || event.propertyName !== "transform") return;
+    if (position === 0) {
+      position = count;
+      translate(position, false);
+    } else if (position === count + 1) {
+      position = 1;
+      translate(position, false);
+    }
+    isAnimating = false;
+  });
+
+  function next() { goTo(index + 1, "next"); }
+  function prev() { goTo(index - 1, "prev"); }
+
+  function stop() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  function play() {
+    stop();
+    if (reduceMotion.matches || paused) return;
+    timer = setInterval(next, INTERVAL);
+  }
+
+  function setPaused(value) {
+    paused = value;
+    if (paused) stop();
+    else play();
+  }
+
+  prevBtn.addEventListener("click", function () { prev(); play(); });
+  nextBtn.addEventListener("click", function () { next(); play(); });
+
+  root.addEventListener("mouseenter", function () { setPaused(true); });
+  root.addEventListener("mouseleave", function () { setPaused(false); });
+  root.addEventListener("focusin", function () { setPaused(true); });
+  root.addEventListener("focusout", function (event) {
+    if (!root.contains(event.relatedTarget)) setPaused(false);
+  });
+
+  root.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      prev();
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      next();
+    }
+  });
+
+  let pointerId = null;
+  let startX = 0;
+  let startY = 0;
+  let lastX = 0;
+  let dragging = false;
+  const THRESHOLD = 40;
+
+  viewport.addEventListener("pointerdown", function (event) {
+    if (event.button != null && event.button !== 0) return;
+    pointerId = event.pointerId;
+    startX = lastX = event.clientX;
+    startY = event.clientY;
+    dragging = false;
+    try { viewport.setPointerCapture(pointerId); } catch (_) {}
+    stop();
+  });
+
+  viewport.addEventListener("pointermove", function (event) {
+    if (pointerId == null || event.pointerId !== pointerId) return;
+    const dx = event.clientX - startX;
+    const dy = event.clientY - startY;
+    lastX = event.clientX;
+    if (!dragging) {
+      if (Math.abs(dx) < 8) return;
+      if (Math.abs(dx) < Math.abs(dy)) {
+        pointerId = null;
+        play();
+        return;
+      }
+      dragging = true;
+      setTransition(false);
+    }
+    const offset = (dx / viewport.clientWidth) * 100;
+    track.style.transform = "translateX(" + (-position * 100 + offset) + "%)";
+  });
+
+  function endPointer(event) {
+    if (pointerId == null || (event && event.pointerId !== pointerId)) return;
+    const dx = lastX - startX;
+    pointerId = null;
+    dragging = false;
+    setTransition(!reduceMotion.matches);
+    if (dx <= -THRESHOLD) next();
+    else if (dx >= THRESHOLD) prev();
+    else translate(position, !reduceMotion.matches);
+    play();
+  }
+
+  viewport.addEventListener("pointerup", endPointer);
+  viewport.addEventListener("pointercancel", endPointer);
+
+  reduceMotion.addEventListener("change", function () {
+    translate(position, false);
+    play();
+  });
+
+  translate(position, false);
+  updateChrome();
+  play();
 })();

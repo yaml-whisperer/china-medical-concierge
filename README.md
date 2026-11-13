@@ -1,3 +1,19 @@
+# China Medical Concierge — v5 carousel draft (not published)
+
+This folder is a **draft-only** copy of the v4 landing page plus a homepage hospital-photo carousel. Do **not** deploy it, do **not** push it to `main` or `gh-pages`, and do **not** replace the live GitHub Pages site at https://yaml-whisperer.github.io/china-medical-concierge/. Go-live stays blocked until the owner approves.
+
+## Preview locally
+
+```bash
+python3 -m http.server 8766 --directory /workspace/opc-medical-mvp/v5-carousel-draft
+```
+
+Then open http://127.0.0.1:8766/ (English) and http://127.0.0.1:8766/zh-hant.html (Traditional Chinese).
+
+## Carousel
+
+A `#facilities` section sits after the hero and trust strip, before `#who`. It has a short intro, three anonymous setting blurbs (a major tertiary general hospital, a specialty / international-department setting, and a modern surgical campus — no hospital names), and one unified 16:9 photo carousel of six real photographs from hospital international-department websites in Beijing, Shanghai and Hong Kong. Auto-slide left every 5 seconds, pause on hover/focus, no autoplay when `prefers-reduced-motion` is set; previous/next, dots, pointer swipe, and keyboard arrows when the carousel is focused. Photo licenses and source URLs are in `PHOTO-SOURCES.md`. A header nav link was not added, because the existing nav is already tight on mid-width screens.
+
 # China Medical Concierge — v2
 
 Static bilingual landing page (English and Traditional Chinese). Deploy `index.html`, `zh-hant.html`, `styles.css`, `app.js`, `README.md`, and the complete `assets/` folder to the GitHub Pages root. Preserve the folder structure. Do not upload `shots/` or test scripts. No build step. Asset paths are relative; Google Fonts is optional (system font fallback).
@@ -9,7 +25,7 @@ Edit the single `CONFIG` object at the top of `app.js`. Leave values empty until
 Original field names, IDs, option values, payload schema and transport behavior are preserved (no page_lang field added, for compatibility): probe `/api/health`, POST JSON to `/api/leads` when available; otherwise POST to `https://webhook.site/b044420a-e14f-4d6d-8ae1-3a5262be27e2`. API routes intentionally remain host-root paths; static assets remain relative. Local API POST errors do not trigger a second webhook POST (prevents duplicates). This temporary public webhook must be replaced with secure production intake before collecting sensitive health details. Never put private credentials in CONFIG.
 
 ## Preview
-`python3 -m http.server 8765 --directory /workspace/opc-medical-mvp/gh-pages-v2`
+`python3 -m http.server 8766 --directory /workspace/opc-medical-mvp/v5-carousel-draft` (draft preview only)
 
 Keyboard-friendly native FAQ, live status/toast, focus outlines, responsive layout and reduced-motion support. Social rail is hidden below 1100px; footer links remain available. SVG skyline is illustrative, not a hospital endorsement. No fake stats, testimonials, hospital logos or licensing claims. Screenshots and test artifacts are not deployment files.
 
